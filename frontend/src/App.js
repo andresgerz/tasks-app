@@ -11,7 +11,6 @@ import NotesList from './components/NotesList';
 function App() {
   return (
     <Router>
-      Hello World!!
       
       <Navigation />
       <div className="container p-4">
