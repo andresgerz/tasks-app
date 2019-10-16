@@ -9,7 +9,7 @@ export default class NotesList extends Component {
     notes: []
   }
 
-  async componentDidMount() {
+  componentDidMount() {
     this.getNotes();
   }
 
@@ -21,7 +21,7 @@ export default class NotesList extends Component {
   }
 
   deleteNote = async (id) => {
-    await axios.delete('http://localhost:4000/api/notes/' + id);
+    await axios.delete("http://localhost:4000/api/notes/" + id);
     this.getNotes();
   }
   

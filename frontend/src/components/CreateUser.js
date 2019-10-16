@@ -1,23 +1,29 @@
-import React, { Component } from 'react'
+  import React, { Component } from 'react'
 import axios from 'axios';
 
 export default class CreateUser extends Component {
   
   state = {
-    users: [],
-    username: ""
+    username: '',
+    users: []
   }
 
   async componentDidMount() {
     this.getUsers();
-  }
+  };
+
 
   getUsers = async () => {
     const res = await axios.get('http://localhost:4000/api/users');
-    this.setState({users: res.data});
-  }
+    console.log("get users");
+    this.setState({
+    users: res.data
   
-  onChangeUsername = (e) => {
+  });
+}
+
+
+  onChangeUsername = e => {
     this.setState({
       username: e.target.value
     })
@@ -31,11 +37,17 @@ export default class CreateUser extends Component {
     })
     this.setState({username: ''});
     this.getUsers();
+    
   }
 
   deleteUser = async (id) => {
-    await axios.delete('http://localhost:4000/api/users/' + id)
-    this.getUsers();
+
+    const response = window.confirm('Do you are sure want to delete it?');
+
+    if (response) {
+      await axios.delete('http://localhost:4000/api/users/' + id);
+      this.getUsers();
+    }
   }
 
   render() {
@@ -47,8 +59,8 @@ export default class CreateUser extends Component {
             <form onSubmit={this.onSubmit}>
               <div className="from-group">
                 <input 
-                  type="text" 
                   className="form-control" 
+                  type="text" 
                   value={this.state.username}
                   onChange={this.onChangeUsername} 
                   />
@@ -66,8 +78,8 @@ export default class CreateUser extends Component {
                 <li 
                   className="list-group-item list-group-item-action" 
                   key={user._id }
-                  onDoubleClick={() => this.deleteUser(user._id)}
-                  >
+                  onDoubleClick={() => this.deleteUser(user._id)}>
+
                   {user.username}
                 </li>)
                 )
