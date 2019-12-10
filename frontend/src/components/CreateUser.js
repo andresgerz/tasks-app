@@ -65,7 +65,7 @@ export default class CreateUser extends Component {
                   onChange={this.onChangeUsername} 
                   />
               </div>
-              <button type="submit" className="btn btn-primary">
+              <button type="submit" className="btn btn-primary mt-3">
                 Save
               </button>
             </form>
@@ -74,14 +74,18 @@ export default class CreateUser extends Component {
         <div className="col-md-8">
           <ul className="list-group">
             {
-              this.state.users.map(user => (
+              this.state.users.map((user, id) => (
                 <li 
                   className="list-group-item list-group-item-action" 
-                  key={user._id }
-                  onDoubleClick={() => this.deleteUser(user._id)}>
-
+                  key={ id }
+                  >
+                  
                   {user.username}
-                </li>)
+                  
+                  <button className="btn btn-danger ml-5" onClick={() => this.deleteUser(user._id)}>
+                    Delete
+                  </button>
+                  </li>)
                 )
             }
           </ul>

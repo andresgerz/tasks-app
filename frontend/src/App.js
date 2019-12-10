@@ -9,18 +9,19 @@ import Navigation from './components/Navigation';
 import NotesList from './components/NotesList';
 
 function App() {
-  return (
-    <Router>
-      
-      <Navigation />
-      <div className="container p-4">
-        <Route path="/" exact component={NotesList} />
-        <Route path="/edit/:id" component={CreateNote} />
-        <Route path="/create" component={CreateNote} />
-        <Route path="/user" component={CreateUser} />
-      </div>
-    </Router>
-  );
+  return (  <React.Fragment>
+              <Router>
+                
+                <Navigation />
+                <div className="container p-4">
+                  <Route path="/" exact component={NotesList} />
+                  <Route path="/edit/:id" component={CreateNote} />
+                  <Route path="/create" component={CreateNote} />
+                  <Route path="/user" component={CreateUser} />
+                </div>
+              </Router>
+            </React.Fragment>
+);
 }
 
 export default App;

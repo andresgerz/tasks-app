@@ -20,10 +20,11 @@ export default class CreateNote extends Component {
     
     if (res.data.length > 0) {
       this.setState({
-        users: res.data.map(user => user.username),
+        users: res.data.map((user) => user.username),
         userSelected: res.data[0].username
       })
     }
+    console.log(this.props);
     if (this.props.match.params.id) {
       const res = await axios.get("http://localhost:4000/api/notes/" + this.props.match.params.id);
 
@@ -60,8 +61,7 @@ export default class CreateNote extends Component {
         date: this.state.date
       };
 
-      const res = await axios.post('http://localhost:4000/api/notes/' + newNote);
-      console.log(res);
+      const res = await axios.post('http://localhost:4000/api/notes/' + this.state._id, newNote);
     }
 
     window.location.href = '/';
@@ -92,8 +92,8 @@ export default class CreateNote extends Component {
                 name="userSelected" 
                 required>
                 {
-                  this.state.users.map(user => 
-                  <option key={user} value={user}>
+                  this.state.users.map((user, id) => 
+                  <option key={id} value={user}>
                     {user}
                   </option>
                   )

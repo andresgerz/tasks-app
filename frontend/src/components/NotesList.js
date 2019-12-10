@@ -29,7 +29,7 @@ export default class NotesList extends Component {
     return (
       <div className="row">
         {
-          this.state.notes.map(note => (
+          this.state.notes.map((note) => (
 
             <div className="col-md-4 p-2" key={note._id}>
               <div className="card">
