@@ -16,7 +16,7 @@ export default class CreateNote extends Component {
   }
 
   async componentDidMount() {
-    const res = await axios.get('http://localhost:4000/api/users');
+    const res = await axios.get('/api/users');
     
     if (res.data.length > 0) {
       this.setState({
@@ -26,7 +26,7 @@ export default class CreateNote extends Component {
     }
     console.log(this.props);
     if (this.props.match.params.id) {
-      const res = await axios.get("http://localhost:4000/api/notes/" + this.props.match.params.id);
+      const res = await axios.get("/api/notes/" + this.props.match.params.id);
 
       this.setState({
         title: res.data.title,
@@ -50,7 +50,7 @@ export default class CreateNote extends Component {
         author: this.state.userSelected,    
         date: this.state.date
       };
-      await axios.put('http://localhost:4000/api/notes/' + this.state._id, updateNote);
+      await axios.put('/api/notes/' + this.state._id, updateNote);
     
     } else {
       
@@ -61,7 +61,7 @@ export default class CreateNote extends Component {
         date: this.state.date
       };
 
-      const res = await axios.post('http://localhost:4000/api/notes/' + this.state._id, newNote);
+      const res = await axios.post('/api/notes/' + this.state._id, newNote);
     }
 
     window.location.href = '/';
