@@ -1,35 +1,27 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
+import { Nav, Navbar } from 'react-bootstrap';
+
 
 export default class Navigation extends Component {
+  
+  
   render() {
     return (
-      <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
-        <div className="container">
-           
-          <Link className="navbar-brand" to="/">
-            NotesApp
-          </Link>
 
-          <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-            <span className="navbar-toggler-icon"></span>
-          </button>
-          <div className="collapse navbar-collapse" id="navbarNav">
-            <ul className="navbar-nav ml-auto">
-              <li className="nav-item active">
-                <Link className="nav-link" to="/">Notes</Link>
-              </li>
-              <li className="nav-item">
-                <Link className="nav-link" to="/create">Create Notes</Link>
-              </li>
-              <li className="nav-item">
-                <Link className="nav-link" to="/user">Create User</Link>
-              </li>
-             
-            </ul>
-          </div>
+        <div>
+          <Navbar collapseOnSelect expand="sm" bg="dark" variant="dark">
+            <Navbar.Brand href="#home">Tasks App</Navbar.Brand>
+            <Navbar.Toggle aria-controls="responsive-navbar-nav" />
+            <Navbar.Collapse id="responsive-navbar-nav">
+              <Nav className="ml-auto">
+                <Link className="text-white mr-4" to="/">Tasks</Link>
+                <Link className="text-white mr-4" to="/create">Create task</Link>
+                <Link className="text-white" to="/user">Create user</Link>
+              </Nav>
+            </Navbar.Collapse>
+          </Navbar>
         </div> 
-      </nav>
     )
   }
 }
